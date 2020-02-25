@@ -1,1 +1,1 @@
-# wakatime-gnome-extension
+# wakatime-gnome-tracker
