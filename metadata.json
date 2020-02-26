@@ -1,0 +1,8 @@
+{
+  "name": "Wakatime Tracker",
+  "description": "Monitor working hours directly from your panel without losing focus of what you are doing.",
+  "uuid": "wakatimegnomeextension@alindesign.github.com",
+  "shell-version": [
+    "3.34"
+  ]
+}

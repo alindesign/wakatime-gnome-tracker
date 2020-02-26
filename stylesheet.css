@@ -1,0 +1,15 @@
+/* Add your custom extension styling here */
+.wk-label {
+    font-size: 14px;
+    font-weight: bold;
+    height: 24px;
+    padding: 8px 14px 0 14px;
+}
+
+.wk-container, .wk-label {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    vertical-align: middle;
+}
