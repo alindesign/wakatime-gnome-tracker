@@ -97,7 +97,7 @@ class Extension {
 
     _load() {
         this._command = ['wakatime', '--today'];
-        this._refreshRate = 1800;
+        this._refreshRate = 300;
     }
 
     _refresh() {
