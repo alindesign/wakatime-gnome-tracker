@@ -1,5 +1,5 @@
 # wakatime-gnome-tracker
-
+![https://imgur.com/download/WPfXRby](https://imgur.com/download/WPfXRby)
 ### Requirements
 - Python
 - [Wakatime](https://github.com/wakatime/wakatime) `$ sudo pip install wakatime`
