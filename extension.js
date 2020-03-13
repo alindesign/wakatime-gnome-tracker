@@ -20,6 +20,8 @@ function log(message) {
  */
 async function execCommand(argv, cancellable = null) {
     try {
+        log('exec: [' + (argv || []).join(' ') + ']');
+
         // There is also a reusable Gio.SubprocessLauncher class available
         let proc = new Gio.Subprocess({
             argv: argv,
@@ -96,12 +98,14 @@ class Extension {
     }
 
     _load() {
-        this._command = ['wakatime', '--today'];
         this._refreshRate = 300;
     }
 
     _refresh() {
-        const t = this._label.get_text() + ' ...';
+        let t = this._label.get_text();
+        if (!t.endsWith('...')) {
+            t += ' ...';
+        }
         log('set label: ' + t);
         this._label.set_text(t);
         this._fetch();
@@ -120,9 +124,23 @@ class Extension {
     _fetch() {
         log('call _fetch');
 
-        execCommand(this._command).then((stdout) => {
-            const out = stdout.toString().trim() || 'N/A';
+        Promise.all([
+            execCommand(['uptime', '-p']),
+            execCommand(['wakatime', '--today']),
+        ]).then(([utime, wtime]) => {
+            let out = wtime.toString().trim();
+            const rightHand = utime.toString().trim();
 
+            if (rightHand) {
+                out += " | Uptime: " + rightHand.replace(/^up/, '').trim()
+            }
+
+            out = out.trim();
+            if (out) {
+                out = 'Wakatime: ' + out;
+            }
+
+            out = out || 'N/A';
             log('set label: ' + out);
             this._label.set_text(out);
         }, () => {
