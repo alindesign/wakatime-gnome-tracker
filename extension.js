@@ -65,8 +65,6 @@ class Extension {
             style_class: "wk-container",
             reactive: true,
             can_focus: true,
-            x_fill: false,
-            y_fill: false,
             x_align: St.Align.MIDDLE,
             y_align: St.Align.MIDDLE,
             track_hover: true
